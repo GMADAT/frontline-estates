@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #fdfbf7;
+    color: #1a1a1a;
+  }
+
+  /* Smooth section anchor offset for fixed nav */
+  [id] { scroll-margin-top: 80px; }
+
+  ::selection {
+    background: rgba(201, 168, 76, 0.28);
+    color: #0a1628;
+  }
+}
+
+/* ── Utilities ── */
+@layer utilities {
+  .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+
+  .text-shadow    { text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+  .text-shadow-sm { text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
+
+  .glass {
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .glass-dark {
+    backdrop-filter: blur(16px);
+    background: rgba(6,14,30,0.85);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* Gold gradient text */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #e8c96a 0%, #c9a84c 50%, #d4a843 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section divider */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.18) 30%, rgba(201,168,76,0.35) 50%, rgba(201,168,76,0.18) 70%, transparent 100%);
+  }
+
+  /* Button shine effect */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.22) 50%, transparent 70%);
+    transform: skewX(-15deg) translateX(-150%);
+    transition: transform 0.5s ease;
+  }
+  .btn-shine:hover::after {
+    transform: skewX(-15deg) translateX(250%);
+  }
+}
+
+/* ── Grain texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+}
+
+/* ── Scrollbar (webkit) ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a1628; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c9a84c, #b8952a);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: #e8c96a; }
+
+/* ── Focus ring ── */
+:focus-visible {
+  outline: 2px solid rgba(201,168,76,0.6);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Advisor card float ── */
+@keyframes advisorFloat {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-7px); }
+}
+.advisor-float {
+  animation: advisorFloat 4.5s ease-in-out infinite;
+  /* Offset phase from the agent card's 5s float so they don't move in sync */
+  animation-delay: -1.8s;
+}
+
+/* ── Ken Burns slow pan-zoom ── */
+@keyframes kenBurns {
+  0%   { transform: scale(1.0) translate(0%, 0%); }
+  25%  { transform: scale(1.06) translate(-1.2%, -0.8%); }
+  50%  { transform: scale(1.1)  translate(-0.5%, 1.0%); }
+  75%  { transform: scale(1.06) translate(1.0%, 0.5%); }
+  100% { transform: scale(1.0)  translate(0%, 0%); }
+}
+.ken-burns {
+  animation: kenBurns 32s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+/* ── Ambient gold bloom pulse ── */
+@keyframes ambientPulse {
+  0%, 100% { opacity: 0.0; transform: scale(1.0); }
+  50%       { opacity: 1.0; transform: scale(1.06); }
+}
+.ambient-pulse {
+  animation: ambientPulse 6s ease-in-out infinite;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .ken-burns, .ambient-pulse { animation: none !important; }
+}
