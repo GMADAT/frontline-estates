@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Award } from 'lucide-react'
-import advisorPortrait from '../assets/hero/advisor.jpg.png'
+import advisorPortrait from '../assets/agents/agent.png'
 
 export default function About() {
   const [portraitErr, setPortraitErr] = useState(false)

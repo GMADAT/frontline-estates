@@ -7,8 +7,8 @@ import kitchenImg from '../assets/hero/kitchen-1.jpg.jpg'
 import extImg     from '../assets/hero/open-house-1.jpg.jpg'
 import suiteImg   from '../assets/hero/mansion-1.jpg.jpg'
 import outdoorImg from '../assets/hero/mansion-2.jpg.jpg'
-import advisorImg  from '../assets/agents/luxury-agent.png.png'
-import coverImg    from '../assets/agents/luxury-agent-cover.png.png'
+import advisorImg  from '../assets/agents/agent.png'
+import coverImg    from '../assets/agents/agent.png'
 
 /* ─── Constants ─────────────────────────────────────── */
 const PHONE  = '6316729013'
