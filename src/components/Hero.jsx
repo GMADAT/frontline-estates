@@ -12,7 +12,7 @@ try {
 
 let advisorImage = null
 try {
-  advisorImage = (await import('../assets/hero/advisor.jpg.png')).default
+  advisorImage = (await import('../assets/agents/agent.png')).default
 } catch {
   // fallback to initials
 }
