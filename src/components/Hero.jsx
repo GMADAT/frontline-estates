@@ -97,8 +97,8 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/25 to-transparent" />
 
       {/* ── CONTENT ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
-        <div className="grid lg:grid-cols-[1fr_360px] gap-10 xl:gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-16 sm:pb-20">
+        <div className="grid lg:grid-cols-[1fr_360px] gap-8 xl:gap-16 items-center">
 
           {/* ── LEFT COLUMN ── */}
           <div>
@@ -113,7 +113,7 @@ export default function Hero() {
               </div>
 
               {/* Headline */}
-              <h1 className="font-serif text-5xl sm:text-6xl lg:text-[4.25rem] xl:text-7xl font-bold text-white leading-[1.04] mb-6"
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-[4.25rem] xl:text-7xl font-bold text-white leading-[1.04] mb-5"
                 style={{ textShadow: '0 4px 32px rgba(0,0,0,0.5)' }}>
                 Real Estate<br />
                 <em className="not-italic" style={{
@@ -123,7 +123,7 @@ export default function Hero() {
                 Frontline Families.
               </h1>
 
-              <p className="text-white/65 text-lg leading-relaxed mb-10 max-w-[520px]"
+              <p className="text-white/65 text-base sm:text-lg leading-relaxed mb-8 max-w-[520px]"
                 style={{ textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}>
                 Private buyer and seller representation for first responders, healthcare workers, veterans, and families across Long Island.
               </p>
@@ -151,7 +151,7 @@ export default function Hero() {
                   value={form.query} onChange={e => set('query', e.target.value)}
                   className="w-full bg-white/[0.06] border border-white/15 text-white placeholder-white/35 text-sm rounded-lg px-4 py-3 focus:outline-none focus:border-gold-400/60 transition-all mb-3"
                 />
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pb-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pb-4">
                   <select value={form.type} onChange={e => set('type', e.target.value)} className={selectCls}>
                     <option value="" className={optionDark}>Property Type</option>
                     <option className={optionDark}>Single Family</option>
@@ -203,16 +203,16 @@ export default function Hero() {
 
           {/* ── RIGHT COLUMN: Agent Card ── */}
           <motion.div
-            initial={{ opacity: 0, x: 36, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            initial={{ opacity: 0, x: 0, y: 24, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, x: 0, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 1.1, delay: 0.18, ease: 'easeOut' }}
-            className="hidden lg:flex justify-center"
+            className="flex justify-center"
           >
             <motion.div
               style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: 1200 }}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="w-full max-w-[340px] rounded-[28px] overflow-hidden cursor-default"
+              className="w-full max-w-[300px] sm:max-w-[340px] rounded-[28px] overflow-hidden cursor-default"
               animate={{ y: [0, -8, 0] }}
               transition={{ y: { duration: 5, repeat: Infinity, ease: 'easeInOut' }, rotateX: {}, rotateY: {} }}
             >
@@ -226,7 +226,7 @@ export default function Hero() {
               }}>
 
                 {/* ── PORTRAIT AREA ── */}
-                <div style={{ position: 'relative', height: 420 }}>
+                <div style={{ position: 'relative', height: 'clamp(280px, 45vw, 420px)' }}>
 
                   {/* Gold ambient bloom behind portrait — brighter at face height */}
                   <div style={{
